@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!-- A glass app with no server code: a stylesheet, an import map and one module. Serve the package root and open /examples/static/. -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Glass demo (static)</title>
+    <link rel="stylesheet" href="../../assets/css/glass.css">
+    <script type="importmap">{"imports": {"glass/": "../../assets/js/glass/", "vue": "../../assets/js/vendor/vue.esm-browser.prod.js"}}</script>
+</head>
+<body>
+    <noscript><p style="padding:2rem">This app needs JavaScript.</p></noscript>
+    <script type="module" src="../../tools/demo/web/app.js"></script>
+</body>
+</html>

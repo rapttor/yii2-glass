@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <!-- A stylised living room, drawn for this demo: bright wall, shelves, sofa, wooden table, lamp. Gives the glass something to refract. -->
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2dacd"/><stop offset="1" stop-color="#c9bba8"/></linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b08560"/><stop offset="1" stop-color="#7a5636"/></linearGradient>
+    <linearGradient id="sofa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a3a5a2"/><stop offset="1" stop-color="#6f726f"/></linearGradient>
+    <radialGradient id="light" cx=".78" cy=".12" r=".6"><stop offset="0" stop-color="#fff6dd" stop-opacity=".95"/><stop offset="1" stop-color="#fff6dd" stop-opacity="0"/></radialGradient>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="2.2"/></filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#wall)"/>
+  <rect x="0" y="690" width="1600" height="310" fill="url(#floor)"/>
+  <rect x="0" y="680" width="1600" height="14" fill="#f1eadf"/>
+  <!-- wall panels -->
+  <g fill="#d6ccbd" opacity=".7"><rect x="430" y="70" width="520" height="560" rx="4"/></g>
+  <g fill="none" stroke="#bfb29f" stroke-width="3" opacity=".8"><rect x="430" y="70" width="520" height="560" rx="4"/><line x1="690" y1="70" x2="690" y2="630"/></g>
+  <!-- shelves, left -->
+  <g filter="url(#soft)"><rect x="40" y="90" width="330" height="560" fill="#5b3e29"/><rect x="58" y="108" width="294" height="160" fill="#3d281b"/><rect x="58" y="290" width="294" height="160" fill="#3d281b"/><rect x="58" y="472" width="294" height="160" fill="#3d281b"/></g>
+  <g filter="url(#soft)"><rect x="80" y="170" width="16" height="98" fill="#c9553f"/><rect x="100" y="180" width="14" height="88" fill="#e9d9b8"/><rect x="118" y="160" width="18" height="108" fill="#35527a"/><rect x="140" y="176" width="14" height="92" fill="#8a9a6b"/>
+    <ellipse cx="250" cy="238" rx="38" ry="30" fill="#e8e0d2"/><path d="M250 208c-30-40-8-70 0-80 12 14 28 42 0 80z" fill="#5f8a4f"/>
+    <rect x="90" y="356" width="120" height="94" fill="#ece5d6"/><rect x="230" y="380" width="90" height="70" fill="#8d6b4a"/></g>
+  <!-- window light -->
+  <rect width="1600" height="1000" fill="url(#light)"/>
+  <!-- floor lamp, right -->
+  <g filter="url(#soft)"><rect x="1352" y="170" width="10" height="520" fill="#2d241d"/><path d="M1290 200l130 0 36 -120h-196z" fill="#8a7767"/><ellipse cx="1357" cy="692" rx="64" ry="12" fill="#2d241d"/></g>
+  <!-- right shelf unit -->
+  <g filter="url(#soft)"><rect x="1030" y="120" width="230" height="360" fill="#6a4b34"/><rect x="1044" y="134" width="202" height="150" fill="#4a3324"/><rect x="1044" y="300" width="202" height="164" fill="#4a3324"/><rect x="1090" y="236" width="90" height="48" fill="#e6dccb"/></g>
+  <!-- sofa shadow + sofa -->
+  <ellipse cx="800" cy="842" rx="520" ry="46" fill="#2a1a0e" opacity=".45" filter="url(#shadow)"/>
+  <g filter="url(#soft)">
+    <rect x="360" y="520" width="880" height="190" rx="48" fill="url(#sofa)"/>
+    <rect x="330" y="560" width="96" height="236" rx="40" fill="#8b8e8b"/><rect x="1174" y="560" width="96" height="236" rx="40" fill="#8b8e8b"/>
+    <rect x="410" y="616" width="390" height="134" rx="34" fill="#9c9f9c"/><rect x="800" y="616" width="390" height="134" rx="34" fill="#959895"/>
+    <rect x="400" y="760" width="800" height="42" rx="12" fill="#5a5d5a"/>
+    <rect x="430" y="520" width="130" height="130" rx="26" fill="#2f3235" transform="rotate(-6 495 585)"/>
+    <rect x="1040" y="528" width="140" height="124" rx="26" fill="#cdb592" transform="rotate(6 1110 590)"/>
+    <rect x="560" y="800" width="26" height="46" fill="#3a2a1d"/><rect x="1014" y="800" width="26" height="46" fill="#3a2a1d"/>
+  </g>
+  <!-- coffee table -->
+  <g filter="url(#soft)"><rect x="520" y="848" width="560" height="46" rx="18" fill="#c4966b"/><rect x="540" y="892" width="22" height="70" fill="#8e6a47"/><rect x="1038" y="892" width="22" height="70" fill="#8e6a47"/>
+    <ellipse cx="760" cy="832" rx="42" ry="36" fill="#efe9dc"/><path d="M760 800c-36-50-4-82 6-96 12 18 34 54-6 96z" fill="#5f8a4f"/><rect x="880" y="826" width="130" height="14" fill="#e7dcc6"/><rect x="890" y="814" width="112" height="12" fill="#b9573f"/></g>
+</svg>

@@ -1,0 +1,89 @@
+// Glass kit, knobs and dials (js/glass/kit-knobs.js). Token driven, class prefix k-knob. Build: npx sass --no-source-map scss/kit/_knobs.scss
+// --k-size, --k-w and --k-c (the accent of one knob) come from the component. --depth, --soft, --shine, --hi and --inset are the look controls.
+$ease: cubic-bezier(.22, 1, .36, 1);
+
+// a raised round surface: depth throws the shadow (and the light one opposite for the neumorphic look), shine lights the top edge, soft diffuses
+@mixin raised($k: 1) {
+  border-radius: 50%; border: 1px solid rgb(var(--text-rgb) / .12);
+  box-shadow:
+    calc(var(--depth) * #{.05px * $k}) calc(var(--depth) * #{.1px * $k}) calc(2px + var(--depth) * #{.14px * $k} + var(--soft) * #{.08px * $k}) rgb(0 0 0 / calc(.12 + var(--depth) * .0032)),
+    calc(var(--depth) * #{-.05px * $k}) calc(var(--depth) * #{-.07px * $k}) calc(2px + var(--depth) * #{.12px * $k}) rgb(255 255 255 / calc(var(--hi) * var(--depth) * .0036)),
+    inset 0 1px 1px rgb(255 255 255 / calc(.14 + var(--shine) * .0055)),
+    inset 0 calc(var(--depth) * #{-.05px * $k}) calc(2px + var(--depth) * #{.07px * $k} + var(--soft) * #{.05px * $k}) rgb(0 0 0 / calc(.05 + var(--depth) * .0018 + var(--inset) * .18));
+}
+
+.v4 {
+  .k-knob { display: grid; justify-items: center; align-content: start; gap: 4px; width: var(--k-w); max-width: 100%; min-width: 0; color: rgb(var(--text-rgb)); text-align: center;
+    &.dis { opacity: .5; } }
+
+  // the only element that takes the drag: touch scrolling stays free everywhere else
+  .k-knob__dial { position: relative; width: var(--k-size); max-width: 100%; min-width: 44px; aspect-ratio: 1; border-radius: 50%; container-type: inline-size;
+    cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+    > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; fill: none; stroke-linecap: round; } }
+  .k-knob__dial:focus-visible { outline: 2px solid var(--accent-c); outline-offset: 3px; border-radius: 50%; }
+  .k-knob.drag .k-knob__dial { cursor: grabbing; }
+  .k-knob.dis .k-knob__dial { cursor: default; touch-action: auto; }
+  .k-knob--steps .k-knob__dial { max-width: calc(100% - 40px); }
+
+  .k-knob__track { stroke: rgb(var(--text-rgb) / .16); stroke-width: 8; }
+  .k-knob__fill { stroke: var(--k-c); stroke-width: 8; transition: stroke-dasharray .25s $ease, stroke-dashoffset .25s $ease, stroke .25s; filter: drop-shadow(0 0 calc(var(--shine) * .03px) var(--k-c)); }
+  .k-knob--dial :is(.k-knob__track, .k-knob__fill) { stroke-width: 4; }
+  .k-knob__zero { stroke: rgb(var(--text-rgb) / .55); stroke-width: 1.6; }
+  .k-knob__turn { transform-origin: 50px 50px; transition: transform .25s $ease; }
+  .k-knob__thumb { fill: #fff; stroke: rgb(0 0 0 / .18); stroke-width: .6; filter: drop-shadow(0 calc(var(--depth) * .012px) calc(1px + var(--depth) * .02px) rgb(0 0 0 / .45)); }
+  .k-knob__marker { fill: rgb(var(--text-rgb) / .8); }
+  .k-knob__tick { stroke: rgb(var(--text-rgb) / .24); stroke-width: 1.2; transition: stroke .2s; &.on { stroke: var(--k-c); } }
+  .k-knob--steps .k-knob__tick { stroke-width: 2.2; }
+
+  // 3D cap with a pointer (dial and stepped)
+  .k-knob__cap, .k-knob__rot { position: absolute; inset: 14%; pointer-events: none; }
+  .k-knob__cap { @include raised;
+    background:
+      radial-gradient(circle at 34% 24%, rgb(255 255 255 / calc(.08 + var(--shine) * .004)), transparent 58%),
+      linear-gradient(155deg, color-mix(in srgb, rgb(var(--tint)), #fff 26%), color-mix(in srgb, rgb(var(--tint)), #000 10%));
+    // the dished top: softness widens and blurs its rim
+    &::after { content: ""; position: absolute; inset: calc(8% + var(--soft) * .05%); border-radius: 50%; border: 1px solid rgb(var(--text-rgb) / calc(.12 - var(--soft) * .0008));
+      background: linear-gradient(335deg, rgb(255 255 255 / calc(.05 + var(--shine) * .0015)), rgb(0 0 0 / calc(.02 + var(--depth) * .0012)));
+      filter: blur(calc(var(--soft) * .006px)); } }
+  .k-knob__rot { transition: transform .25s $ease;
+    i { position: absolute; left: 50%; top: 6%; width: 7%; min-width: 3px; height: 27%; transform: translateX(-50%); border-radius: calc(1px + var(--soft) * .08px); background: var(--k-c);
+      box-shadow: 0 0 calc(1px + var(--shine) * .06px) var(--k-c), 0 calc(var(--depth) * .01px) 2px rgb(0 0 0 / .35); } }
+  .k-knob--steps :is(.k-knob__cap, .k-knob__rot) { inset: 22%; }
+  .k-knob.drag :is(.k-knob__fill, .k-knob__turn, .k-knob__rot) { transition: none; }   // follow the pointer without lag
+
+  // thermostat: large inner disc
+  .k-knob__disc { position: absolute; inset: 17%; pointer-events: none; @include raised(2);
+    background:
+      radial-gradient(circle at 34% 22%, rgb(255 255 255 / calc(.04 + var(--shine) * .0018)), transparent 56%),
+      linear-gradient(155deg, color-mix(in srgb, rgb(var(--tint)), rgb(var(--text-rgb)) 9%), rgb(var(--tint))); }
+  .k-knob--thermo .k-knob__tick { stroke-width: 1; &.on { stroke-width: 1.5; } }
+  .k-knob--thermo .k-knob__thumb { stroke: var(--k-c); stroke-width: 2; }
+
+  // values and labels
+  .k-knob__mid { position: absolute; inset: 20%; display: grid; place-content: center; justify-items: center; gap: 1px; pointer-events: none; overflow: hidden;
+    b { font-size: max(12px, 18cqw); line-height: 1.1; font-weight: 750; letter-spacing: -.02em; white-space: nowrap; font-variant-numeric: tabular-nums;
+      small { margin-left: 1px; font-size: max(10px, .55em); font-weight: 650; color: var(--muted); letter-spacing: 0; } }
+    > small { font-size: max(10px, min(12px, 9cqw)); line-height: 1.2; } }
+  .k-knob--thermo .k-knob__mid { b { font-size: 19cqw; } > small { font-size: 12.5px; } }
+  .k-knob__v { font-size: 13px; line-height: 1.25; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .k-knob__l { max-width: 100%; font-size: 12px; line-height: 1.3; font-weight: 650; color: var(--muted); overflow-wrap: anywhere; }
+  .k-knob__mk { position: absolute; transform: translate(-50%, -50%); min-width: 24px; padding: 4px; font-size: 11px; line-height: 1.2; font-weight: 650; white-space: nowrap; color: var(--muted); font-variant-numeric: tabular-nums; cursor: pointer; transition: color .2s;
+    &.on { color: rgb(var(--text-rgb)); font-weight: 800; } }
+  .k-knob.dis .k-knob__mk { cursor: default; }
+
+  // showcase
+  .k-knob-demo { width: 100%; max-width: 980px;   // .page has auto margins, which would shrink this grid item to its content
+    h4{ margin: 0; font-size: 12px; font-weight: 700; color: var(--muted); } }
+  .k-knob-gal { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); align-items: start; }
+  .k-knob-mix { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(112px, 1fr)); }
+  .k-knob-strip { display: grid; justify-items: center; align-content: start; gap: 12px; min-width: 0; padding-left: 8px; padding-right: 8px; text-align: center; h4 { overflow-wrap: anywhere; } }
+  .k-knob-card { display: grid; justify-items: center; gap: 16px; min-width: 0; }
+  .k-knob-row { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 18px; width: 100%; }
+  .k-knob-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0; min-height: 40px; min-width: 88px; padding: 0 14px; border-radius: 999px; font-size: 13px; font-weight: 650; background: rgb(var(--text-rgb) / .08); border: 1px solid var(--line); transition: background .2s, transform .2s $ease;
+    span { margin-left: 7px; } &:hover { background: rgb(var(--text-rgb) / .14); } &:active { transform: scale(.95); }
+    &.on { background: color-mix(in srgb, var(--bad) 22%, transparent); border-color: color-mix(in srgb, var(--bad) 55%, transparent); } }
+  .k-knob-sum { display: grid; gap: 6px; width: 100%; margin: 0; font-size: 13.5px; font-variant-numeric: tabular-nums;
+    div { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; } dt { color: var(--muted); } dd { margin: 0; font-weight: 650; }
+    .total { padding-top: 8px; border-top: 1px solid var(--line); dt { color: rgb(var(--text-rgb)); font-weight: 650; } dd { font-size: 18px; font-weight: 800; } } }
+  .k-knob-note { min-height: 1.4em; }
+}

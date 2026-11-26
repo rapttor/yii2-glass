@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.woff binary
+*.woff2 binary
+/.github export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/phpunit.xml export-ignore
+/tests export-ignore
+/tools/demo/web/index.php export-ignore

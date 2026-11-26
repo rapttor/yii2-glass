@@ -1,0 +1,8 @@
+/vendor/
+/composer.lock
+.phpunit.result.cache
+.DS_Store
+tools/demo/web/assets/*
+tools/demo/runtime/*
+!tools/demo/web/assets/.gitkeep
+!tools/demo/runtime/.gitkeep

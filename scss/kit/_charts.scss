@@ -1,0 +1,53 @@
+// Glass kit, third-party charts (js/glass/kit-charts.js): Chart.js, ApexCharts and uPlot wrappers plus the gallery. Class prefix k-.
+// ApexCharts and uPlot add their own CSS after this file, so the overrides carry one class more than theirs.
+$ease: cubic-bezier(.22, 1, .36, 1);
+
+.k-xc { position: relative; width: 100%; min-width: 0;
+  &__box { position: relative; width: 100%; height: 100%; min-width: 0; }
+  &__wait { position: absolute; inset: 0; border-radius: var(--r-s); pointer-events: none; background: linear-gradient(100deg, rgb(var(--text-rgb) / .05) 30%, rgb(var(--text-rgb) / .12) 50%, rgb(var(--text-rgb) / .05) 70%) 0 0 / 240% 100%; animation: k-xc-wait 1.4s linear infinite; }
+  &__msg { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 10px; padding: 12px; text-align: center; font-size: 13px; color: rgb(var(--text-rgb) / .85); border-radius: var(--r-s); background: rgb(var(--tint) / .86); }
+  &:focus-visible { outline: 0; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-c) 40%, transparent); border-radius: var(--r-s); } }
+@keyframes k-xc-wait { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+
+.k-chartjs canvas { display: block; max-width: 100%; touch-action: pan-y; }
+
+// ---------- ApexCharts ----------
+.k-xc.k-apex {
+  .apexcharts-canvas { margin: 0 auto; }
+  .apexcharts-tooltip, .apexcharts-xaxistooltip, .apexcharts-yaxistooltip { color: rgb(var(--text-rgb)); background: rgb(var(--tint) / .92); border: 1px solid rgb(var(--edge) / var(--edge-a)); border-radius: var(--r-s); box-shadow: var(--sh-c);
+    -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--sat)); backdrop-filter: blur(var(--blur)) saturate(var(--sat)); }
+  .apexcharts-tooltip .apexcharts-tooltip-title { background: rgb(var(--text-rgb) / .08); border-bottom: 1px solid var(--line); font-weight: 650; }
+  .apexcharts-tooltip-box { padding: 6px 10px; }
+  // the arrows of the axis labels
+  .apexcharts-xaxistooltip-bottom::before, .apexcharts-xaxistooltip-bottom::after { border-bottom-color: rgb(var(--tint) / .92); }
+  .apexcharts-xaxistooltip-top::before, .apexcharts-xaxistooltip-top::after { border-top-color: rgb(var(--tint) / .92); }
+  .apexcharts-yaxistooltip-left::before, .apexcharts-yaxistooltip-left::after { border-left-color: rgb(var(--tint) / .92); }
+  .apexcharts-yaxistooltip-right::before, .apexcharts-yaxistooltip-right::after { border-right-color: rgb(var(--tint) / .92); }
+}
+.v4.solid .k-xc.k-apex :is(.apexcharts-tooltip, .apexcharts-xaxistooltip, .apexcharts-yaxistooltip) { background: rgb(var(--tint) / .96) !important; -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+
+// ---------- uPlot ----------
+.k-uplot__host { width: 100%; min-width: 0; overflow: hidden; }
+.k-xc.k-uplot {
+  .uplot { width: 100%; font-family: inherit; line-height: 1.4; }
+  .u-over { cursor: crosshair; touch-action: pan-y; }
+  .u-select { background: color-mix(in srgb, var(--accent-c) 22%, transparent); }
+  .u-cursor-x { border-right: 1px dashed rgb(var(--text-rgb) / .45); }
+  .u-cursor-y { border-bottom: 1px dashed rgb(var(--text-rgb) / .45); }
+  .u-legend { width: 100%; margin: 4px 0 0; font-size: 12px; color: rgb(var(--text-rgb) / .8); text-align: center; background: transparent; border: 0;
+    tbody { display: block; background: transparent; }
+    .u-series { display: inline-flex; align-items: center; min-height: 40px; margin-right: 10px; background: transparent; border: 0; }
+    th, td { padding: 4px; border: 0; background: transparent; color: inherit; font-size: inherit; text-transform: none; letter-spacing: normal; }
+    th { display: inline-flex; align-items: center; min-height: 40px; cursor: pointer; border-radius: var(--r-s); transition: background .2s $ease; &:hover { background: rgb(var(--text-rgb) / .08); } }
+    .u-marker { border-radius: 4px; }
+    .u-value { font-variant-numeric: tabular-nums; font-weight: 650; color: rgb(var(--text-rgb)); } }
+}
+
+// ---------- gallery ----------
+.k-gal {
+  &__h { margin: 6px 2px -4px; font-size: 18px; font-weight: 750; letter-spacing: -.01em; }
+  &__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 14px; > * { min-width: 0; } }
+  &__wide { grid-column: 1 / -1; }
+  &__sparks { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 14px; }
+  &__spark { display: grid; gap: 4px; align-content: start; min-width: 0; > b { font-size: 22px; font-weight: 800; letter-spacing: -.02em; font-variant-numeric: tabular-nums; } }
+  &__tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; .chip { height: 40px; } } }

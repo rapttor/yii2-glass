@@ -1,0 +1,32 @@
+# rapttor/yii2-glass
+
+> The Rapttor glass UI: app shell and Vue 3 components over refractive frosted glass, light and dark, mobile first, no JavaScript build step. Yii2 package whose `assets/` folder also works in static and PWA apps. Early version (0.x). MIT.
+
+Integrating or changing it: read AGENTS.md first.
+
+- [README.md](README.md): install, controller, app module, static use
+- [AGENTS.md](AGENTS.md): the look rules every screen keeps, and rules for changing the package
+- [docs/COMPONENTS.md](docs/COMPONENTS.md): how a component is written
+- [docs/VENDOR.md](docs/VENDOR.md): third-party libraries, licences, warnings
+- [assets/js/glass/app.js](assets/js/glass/app.js): createGlassApp() and its options
+- [tools/demo/web/app.js](tools/demo/web/app.js): a working app in 80 lines
+
+## Components (assets/js/glass/)
+
+Global after createGlassApp():
+- ui.js: Ico, Holder, Card, Badge, Avatar, Segmented, Chips, Toggle, Field, Slider, Stepper, Progress, Collapse, Accordion, Spark, Stat, AreaChart, Donut, Skeleton, Empty, Sheet, Toasts, toast()
+- nav.js: GlassTabs, IconPill, NotchBar
+- kit-forms.js: useForm, rules, FormField, TextInput, CheckBox, CheckGroup, RadioGroup, DatePicker, TimePicker, Combobox, TagsInput, FileDrop, PasswordField, OtpInput, RatingInput, RangeSlider, ColorPicker, NumberField, SearchField, AutoTextarea
+- kit-overlay.js: Popover, MenuButton, Dropdown, ContextMenu, Tooltip, Modal, confirm(), Drawer, Alert, snack(), Spinner, LoadingButton, RingProgress, UpdateBanner
+- kit-data.js: DataTable, Pagination, Calendar, Timeline, TreeView, BarChart, LineChart, Gauge, FunnelChart, Heatmap, Kanban
+- kit-nav.js: Breadcrumbs, Steps, Wizard, Tabs, Fab, BottomActionBar, StackNav, SnapSheet, SwipeRow, PullRefresh, AvatarGroup, Lightbox, ImageGallery, ChatThread, CommentThread, MarkdownView, MarkdownEditor
+- kit-panels.js: usePanels(), KSplit, KPanel, KDockTabs, KWorkspace
+- kit-knobs.js: Knob
+
+Opt in with `install(app) { registerKitCharts(app) }`:
+- kit-core.js (registerKitCore): Carousel, ButtonGroup, Toolbar, KCard, PricingCard, ListGroup, Navbar, Offcanvas, Placeholder, Ratio, Divider, Kbd, CodeBlock, useBreakpoint()
+- kit-icons.js (registerKitIcons): Icon, IconBrowser
+- kit-editors.js (registerKitEditors): ExtQuill, ExtTrix, ExtHtml, ExtSwiper, ExtRange, sanitizeHtml()
+- kit-charts.js (registerKitCharts): ExtChartJs, ExtApex, ExtUPlot
+
+Each kit has a `Demo*` showcase component that shows how to call it.
