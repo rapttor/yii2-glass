@@ -4,7 +4,7 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
-## [0.1.0] - 2026-11-27
+## [1.0.0] - 2026-11-27
 
 ### Added
 - First version, taken from the demo's "glass v6": app shell, `createGlassApp()`, forms, overlays, data, navigation, panels and docks, knobs, layout, icons, editors and charts.

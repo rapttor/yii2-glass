@@ -2,7 +2,7 @@
 
 The Rapttor look: refractive glass over a picture, light and dark, mobile first. An app shell (sidebar with four states, hover
 helper, mega menu, phone bar, search, settings) and Vue 3 components, including panels, docks, forms, data, charts and knobs.
-JavaScript needs no build step. Early version: a `0.x` minor release may break things, read the CHANGELOG.
+JavaScript needs no build step. Versions follow SemVer, see the CHANGELOG.
 
 The `assets/` folder has no PHP in it: Yii2 apps use it through this package, static and PWA apps can serve it as it is.
 

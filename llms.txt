@@ -1,6 +1,6 @@
 # rapttor/yii2-glass
 
-> The Rapttor glass UI: app shell and Vue 3 components over refractive frosted glass, light and dark, mobile first, no JavaScript build step. Yii2 package whose `assets/` folder also works in static and PWA apps. Early version (0.x). MIT.
+> The Rapttor glass UI: app shell and Vue 3 components over refractive frosted glass, light and dark, mobile first, no JavaScript build step. Yii2 package whose `assets/` folder also works in static and PWA apps. MIT.
 
 Integrating or changing it: read AGENTS.md first.
 
