@@ -3683,6 +3683,14 @@ main {
   display: block;
 }
 
+.v4 a.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
 .v4.v4 .k-container, .v4.v4 .k-container-fluid, .v4.v4 .k-container-sm, .v4.v4 .k-container-md, .v4.v4 .k-container-lg, .v4.v4 .k-container-xl, .v4.v4 .k-container-xxl {
   width: 100%;
   margin-inline: auto;

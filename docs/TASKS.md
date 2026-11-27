@@ -12,3 +12,4 @@
 | todo | `Yii::t()` / message option for the interface texts (`en`, `sh`) | Sonnet |
 | todo | Trix and Quill advisories (`docs/VENDOR.md`) | Opus |
 | todo | Touch checks on a real phone: splitters, swipe, drag and drop, knobs | Sonnet |
+| done | Public demo on GitHub Pages (`demo/`, `.github/workflows/pages.yml`) | Sonnet |

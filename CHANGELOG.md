@@ -4,6 +4,12 @@ All notable changes to this project. Format: [Keep a Changelog](https://keepacha
 
 ## [Unreleased]
 
+### Added
+- Public demo on GitHub Pages (`demo/`): the whole kit, the sales example, invoice, landing pages and mail templates.
+
+### Fixed
+- A link styled as a button centres its text.
+
 ## [1.0.0] - 2026-11-27
 
 ### Added

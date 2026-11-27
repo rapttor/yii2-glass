@@ -5,6 +5,7 @@
 Integrating or changing it: read AGENTS.md first.
 
 - [README.md](README.md): install, controller, app module, static use
+- [Live demo](https://rapttor.github.io/yii2-glass/): every component and the example pages (source: demo/app.js, demo/pages/)
 - [AGENTS.md](AGENTS.md): the look rules every screen keeps, and rules for changing the package
 - [docs/COMPONENTS.md](docs/COMPONENTS.md): how a component is written
 - [docs/VENDOR.md](docs/VENDOR.md): third-party libraries, licences, warnings

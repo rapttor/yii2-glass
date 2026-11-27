@@ -223,3 +223,5 @@ $spring: cubic-bezier(.34, 1.56, .64, 1);
     svg { width: calc(20px * var(--s, 1)); height: calc(20px * var(--s, 1)); } &:hover { background: rgb(var(--text-rgb) / .18); } &.on { background: var(--accent-c); color: var(--accent-ink); } } }
 
 .v4 .feed li > div > small { display: block; }   // the second line of a list row sits under the first
+
+.v4 a.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }   // a link that looks like a button centres its text like one

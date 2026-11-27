@@ -36,6 +36,9 @@
     },
     "scripts": {
         "test": "phpunit -c phpunit.xml",
-        "css": "npx sass --no-source-map --style=expanded --quiet scss/glass.scss assets/css/glass.css"
+        "css": [
+            "npx --yes sass@1.108.2 --no-source-map --style=expanded --quiet scss/glass.scss assets/css/glass.css",
+            "npx --yes sass@1.108.2 --no-source-map --style=expanded --quiet demo/scss/demo.scss demo/demo.css"
+        ]
     }
 }

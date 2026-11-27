@@ -4,6 +4,8 @@ The Rapttor look: refractive glass over a picture, light and dark, mobile first.
 helper, mega menu, phone bar, search, settings) and Vue 3 components, including panels, docks, forms, data, charts and knobs.
 JavaScript needs no build step. Versions follow SemVer, see the CHANGELOG.
 
+**Live demo: https://rapttor.github.io/yii2-glass/** (source in `demo/`, sample data only).
+
 The `assets/` folder has no PHP in it: Yii2 apps use it through this package, static and PWA apps can serve it as it is.
 
 ## Yii2
@@ -67,7 +69,7 @@ See `examples/static/index.html`: link `assets/css/glass.css`, map `glass/` and 
 php -S 127.0.0.1:8099 -t .
 ```
 
-Then open `http://127.0.0.1:8099/tools/demo/web/index.php` (needs `composer install`) or `http://127.0.0.1:8099/examples/static/`.
+Then open `http://127.0.0.1:8099/tools/demo/web/index.php` (needs `composer install`) `http://127.0.0.1:8099/examples/static/` or the full demo at `http://127.0.0.1:8099/demo/`.
 
 ## Develop
 

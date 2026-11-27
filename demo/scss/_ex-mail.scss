@@ -1,0 +1,38 @@
+// Glass kit v6, example "Mail templates" (demo/pages/ex-mail.js). Driven by the tokens of .v4, class prefix x-mail.
+// Only the page around the preview is styled here: the mails carry their own inline styles.
+$ease: cubic-bezier(.22, 1, .36, 1);
+
+.x-mail { display: grid; gap: 14px; min-width: 0;
+  &__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; align-items: start; }
+  &__side, &__main { min-width: 0; }
+  &__main { display: grid; gap: 14px; align-content: start; }
+  &__form { display: grid; gap: 14px; }
+  &__row { display: grid; gap: 6px; > span { font-size: 12.5px; font-weight: 650; color: var(--muted); } .seg button { min-height: 40px; } }
+  &__kind { display: grid; gap: 6px; justify-items: start; padding-top: 12px; border-top: 1px solid var(--line); p { margin: 0; font-size: 12.5px; color: var(--muted); } }
+
+  // accent swatches: 40 px targets around a smaller dot, the ring marks the choice
+  &__sw { display: flex; flex-wrap: wrap; gap: 6px;
+    button { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border-radius: 50%; transition: background .2s;
+      &:hover { background: rgb(var(--text-rgb) / .1); }
+      i { width: 26px; height: 26px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .45); transition: box-shadow .25s $ease; }
+      &.on i { box-shadow: 0 0 0 2px rgb(var(--tint)), 0 0 0 4px rgb(var(--text-rgb)); } } }
+
+  &__bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; .seg button { min-height: 40px; } }
+  &__meta { display: grid; gap: 4px; margin: 0; font-size: 13px;
+    > div { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 10px; }
+    dt { color: var(--muted); font-weight: 650; } dd { margin: 0; overflow-wrap: anywhere; } }
+
+  &__stage { display: flex; justify-content: center; min-width: 0; padding: 10px; border-radius: var(--r-m); background: rgb(var(--text-rgb) / .07); border: 1px solid var(--line);
+    &.desktop.html { justify-content: flex-start; overflow-x: auto; } }   // the 600 px layout scrolls sideways on narrow screens instead of switching to the phone layout
+  &__frame { display: block; flex: none; height: clamp(440px, 72vh, 860px); border: 0; border-radius: var(--r-s); background: #fff; transition: width .35s $ease; }
+  &__stage.desktop &__frame { width: 100%; min-width: 640px; }
+  &__stage.phone &__frame { width: min(375px, 100%); box-shadow: 0 0 0 6px rgb(var(--text-rgb) / .16), var(--sh-c); border-radius: var(--r-m); margin: 6px 0; }
+  &__text { flex: 1; min-width: 0; max-height: clamp(440px, 72vh, 860px); margin: 0; padding: 16px; overflow: auto; border-radius: var(--r-s); background: rgb(var(--tint) / .9); color: rgb(var(--text-rgb)); font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; user-select: text; }
+  &__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; } }
+}
+
+// off-screen helper for copying where the clipboard API is not available (it is added to <body>)
+.x-mail__clip { position: fixed; top: 0; left: -9999px; opacity: 0; }
+
+@media (max-width: 479px) { .x-mail__actions .btn { flex: 1; } .x-mail__meta > div { grid-template-columns: minmax(0, 1fr); gap: 0; } }
+@media (min-width: 1100px) { .x-mail__grid { grid-template-columns: 300px minmax(0, 1fr); } }

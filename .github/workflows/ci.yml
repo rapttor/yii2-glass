@@ -29,8 +29,9 @@ jobs:
         with:
           node-version: 22
       - name: Every module parses
-        run: for f in assets/js/glass/*.js tools/demo/web/app.js; do node --input-type=module --check < "$f" || exit 1; done
+        run: for f in assets/js/glass/*.js tools/demo/web/app.js demo/app.js demo/pages/*.js; do node --input-type=module --check < "$f" || exit 1; done
       - name: The committed stylesheet matches the sources
         run: |
           npx --yes sass@1.108.2 --no-source-map --style=expanded --quiet scss/glass.scss assets/css/glass.css
-          git diff --exit-code assets/css
+          npx --yes sass@1.108.2 --no-source-map --style=expanded --quiet demo/scss/demo.scss demo/demo.css
+          git diff --exit-code assets/css demo/demo.css
